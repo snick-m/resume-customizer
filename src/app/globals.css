@@ -22,8 +22,15 @@
     line-height: 1.2;
 }
 
+.resume {
+    min-width: 8.5in;
+    min-height: 11in;
+    color: black;
+    background-color: white;
+}
+
 body {
-    max-width: 8.5in;
+    max-width: 15in;
     margin: 0 auto;
     padding: 0.6in 0.5in;
     font-size: 10pt;

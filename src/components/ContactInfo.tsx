@@ -1,4 +1,5 @@
 import { useContactInfoStore } from "@/stores/store";
+import { Fragment } from "react";
 
 // Replace the content of your React component here
 interface ContactInfoProps {
@@ -9,15 +10,15 @@ interface ContactInfoProps {
   website?: string;
 }
 
-function Component() {
-  const contactInfoState = useContactInfoStore();
+function ContactInfoComponent() {
+  const contactInfo = useContactInfoStore();
 
   const processedData = {
-    phone: contactInfoState.phone,
-    email: mailTo(contactInfoState.email || ''),
-    linkedin: shortened(contactInfoState.linkedin || ''),
-    github: shortened(contactInfoState.github || ''),
-    website: shortened(contactInfoState.website || ''),
+    phone: contactInfo.phone,
+    email: mailTo(contactInfo.email || ''),
+    linkedin: shortened(contactInfo.linkedin || ''),
+    github: shortened(contactInfo.github || ''),
+    website: shortened(contactInfo.website || ''),
   };
 
   function mailTo(email: string) {
@@ -31,17 +32,17 @@ function Component() {
   }
 
   return (
-    <div className="flex flex-row justify-center space-x-4">
+    <div className="flex flex-row justify-center space-x-1">
       {Object.entries(processedData).map((value, i) => {
-        return <>
+        return <Fragment key={i}>
           {(i > 0 && value[1]) && <span>|</span>}
           <div key={value[0]} className="text-center text-nowrap">
             {value[1]}
           </div>
-        </>
+        </Fragment>
       })}
     </div>
   );
 }
 
-export default Component;
+export default ContactInfoComponent;

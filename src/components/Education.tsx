@@ -11,8 +11,6 @@ interface EducationProps {
 const Education: React.FC<EducationProps> = ({ school, degree, fieldOfStudy, startDate, endDate }) => {
   return (
     <>
-      <h2 className='font-bold'>Education</h2>
-      <hr />
       <div className="flex justify-between mt-2">
         <div className="position">{school}</div>
         <div className="date">{startDate} - {endDate}</div>

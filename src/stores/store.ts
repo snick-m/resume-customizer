@@ -1,7 +1,6 @@
-import { ContactInfo } from '@/components/ContactInfo';
 import { create } from 'zustand';
 
-interface EducationEntry {
+export interface EducationEntry {
   school: string;
   degree: string;
   fieldOfStudy: string;
@@ -9,7 +8,7 @@ interface EducationEntry {
   endDate?: string;
 }
 
-interface ExperienceEntry {
+export interface ExperienceEntry {
   company: string;
   position: string;
   startDate: string;
@@ -17,13 +16,13 @@ interface ExperienceEntry {
   points: string[];
 }
 
-interface ProjectEntry {
+export interface ProjectEntry {
   title: string;
   points: string[];
   link?: string;
 }
 
-interface AchievementEntry {
+export interface AchievementEntry {
   title: string;
   event: string;
   points: string[];
@@ -57,7 +56,7 @@ interface AchievementState {
   removeEntry: (index: number) => void;
 }
 
-interface ContactInfo {
+export interface ContactInfo {
   phone?: string;
   email?: string;
   linkedin?: string;
@@ -78,7 +77,7 @@ interface LayoutState {
   spacing: number;
   setSpacing: (spacing: number) => void;
   indentation: boolean;
-  toggleIndentation: () => void;  
+  toggleIndentation: () => void;
 }
 
 export const useLayoutStore = create<LayoutState>((set) => ({
@@ -89,7 +88,22 @@ export const useLayoutStore = create<LayoutState>((set) => ({
 }));
 
 export const useEducationStore = create<EducationState>((set) => ({
-  entries: [],
+  entries: [
+    {
+      school: 'Toronto Metropolitan University',
+      degree: 'Bachelor of Science',
+      fieldOfStudy: 'Computer Science',
+      startDate: 'September 2023',
+      endDate: 'December 2025'
+    },
+    {
+      school: 'BRAC University',
+      degree: 'Bachelor of Science',
+      fieldOfStudy: 'Computer Science',
+      startDate: 'June 2021',
+      endDate: 'December 2023'
+    }
+  ],
   addEntry: (entry) => set((state) => ({ entries: [...state.entries, entry] })),
   updateEntry: (index, entry) => set((state) => {
     const entries = [...state.entries];
@@ -104,7 +118,29 @@ export const useEducationStore = create<EducationState>((set) => ({
 }));
 
 export const useExperienceStore = create<ExperienceState>((set) => ({
-  entries: [],
+  entries: [
+    {
+      company: 'Toronto MetRobotics',
+      position: 'Camera Systems Lead Developer',
+      startDate: 'June 2024',
+      points: [
+        'Assisted in grading assignments and exams',
+        'Held office hours to help students with course material',
+        'Conducted lab sessions to teach programming concepts'
+      ]
+    },
+    {
+      company: 'Sugary',
+      position: 'NodeJS Developer',
+      startDate: 'June 2021',
+      endDate: 'December 2023',
+      points: [
+        'Assisted in grading assignments and exams',
+        'Held office hours to help students with course material',
+        'Conducted lab sessions to teach programming concepts'
+      ]
+    }
+  ],
   addEntry: (entry) => set((state) => ({ entries: [...state.entries, entry] })),
   updateEntry: (index, entry) => set((state) => {
     const entries = [...state.entries];
@@ -149,10 +185,10 @@ export const useAchievementStore = create<AchievementState>((set) => ({
 }));
 
 export const useContactInfoStore = create<ContactInfoState>((set) => ({
-  phone: '',
-  email: '',
-  linkedin: '',
-  github: '',
+  phone: '123-456-7890',
+  email: 'mushfiqur.rahman@torontomu.ca',
+  linkedin: 'https://linkedin.com/in/mushfiqrrm',
+  github: 'https://github.com/snick-m ',
   website: '',
   setInfo: (info) => set(info),
 }));
