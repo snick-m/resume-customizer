@@ -1,11 +1,11 @@
 import { useContactInfoStore } from "@/stores/store";
 
 
-export default function ContactInfoForm() {
+export default function ContactInfoForm({ className }: { className?: string }) {
   const contactInfo = useContactInfoStore();
 
   return (
-    <div className="grid grid-flow-row grid-cols-2 justify-items-stretch content-start w-full gap-4">
+    <div className={"grid grid-flow-row grid-cols-2 justify-items-stretch content-start w-full gap-4 " + className}>
       <label htmlFor="phone" className="row-start-1 text-center">Phone Number</label>
       <input className="p-2 rounded-lg row-start-2 text-black"
         value={contactInfo.phone}
@@ -29,7 +29,7 @@ export default function ContactInfoForm() {
 
       <label htmlFor="website" className="row-start-3 text-center">Website</label>
       <input className="p-2 rounded-lg row-start-4 text-black"
-        value={contactInfo.linkedin}
+        value={contactInfo.website}
         name="website"
         type="text" placeholder="Personal Website Link"
         onChange={(e) => contactInfo.setInfo({ website: e.target.value })} />

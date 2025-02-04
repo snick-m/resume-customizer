@@ -33,6 +33,7 @@ interface EducationState {
   addEntry: (entry: EducationEntry) => void;
   updateEntry: (index: number, entry: EducationEntry) => void;
   removeEntry: (index: number) => void;
+  clearEntries: () => void;
 }
 
 interface ExperienceState {
@@ -40,6 +41,7 @@ interface ExperienceState {
   addEntry: (entry: ExperienceEntry) => void;
   updateEntry: (index: number, entry: ExperienceEntry) => void;
   removeEntry: (index: number) => void;
+  clearEntries: () => void;
 }
 
 interface ProjectState {
@@ -47,6 +49,7 @@ interface ProjectState {
   addEntry: (entry: ProjectEntry) => void;
   updateEntry: (index: number, entry: ProjectEntry) => void;
   removeEntry: (index: number) => void;
+  clearEntries: () => void;
 }
 
 interface AchievementState {
@@ -54,6 +57,7 @@ interface AchievementState {
   addEntry: (entry: AchievementEntry) => void;
   updateEntry: (index: number, entry: AchievementEntry) => void;
   removeEntry: (index: number) => void;
+  clearEntries: () => void;
 }
 
 export interface ContactInfo {
@@ -115,6 +119,7 @@ export const useEducationStore = create<EducationState>((set) => ({
     entries.splice(index, 1);
     return { entries };
   }),
+  clearEntries: () => set({ entries: [] }),
 }));
 
 export const useExperienceStore = create<ExperienceState>((set) => ({
@@ -152,6 +157,7 @@ export const useExperienceStore = create<ExperienceState>((set) => ({
     entries.splice(index, 1);
     return { entries };
   }),
+  clearEntries: () => set({ entries: [] }),
 }));
 
 export const useProjectStore = create<ProjectState>((set) => ({
@@ -167,6 +173,7 @@ export const useProjectStore = create<ProjectState>((set) => ({
     entries.splice(index, 1);
     return { entries };
   }),
+  clearEntries: () => set({ entries: [] }),
 }));
 
 export const useAchievementStore = create<AchievementState>((set) => ({
@@ -182,6 +189,7 @@ export const useAchievementStore = create<AchievementState>((set) => ({
     entries.splice(index, 1);
     return { entries };
   }),
+  clearEntries: () => set({ entries: [] }),
 }));
 
 export const useContactInfoStore = create<ContactInfoState>((set) => ({

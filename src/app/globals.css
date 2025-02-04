@@ -25,6 +25,7 @@
 .resume {
     min-width: 8.5in;
     min-height: 11in;
+    max-width: 8.5in;
     color: black;
     background-color: white;
 }

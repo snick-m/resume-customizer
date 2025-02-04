@@ -1,22 +1,20 @@
-import { useEducationStore } from "@/stores/store"
-import Education from "@/components/Education";
+import { useAchievementStore } from "@/stores/store"
+import Achievement from "@/components/Achievement";
 
-export function EducationList() {
-  const education = useEducationStore();
+export function AchievementList() {
+  const achievement = useAchievementStore();
 
   return (
     <div>
-      {education.entries.length > 0 &&
-        <h2 className='font-bold border-b-1 text-base mx-4'>Education</h2>
+      {achievement.entries.length > 0 &&
+        <h2 className='font-bold border-b-1 text-base mx-4'>Achievement</h2>
       }
-      {education.entries.map((entry, i) => (
-        <Education
+      {achievement.entries.map((entry, i) => (
+        <Achievement
           key={i}
-          degree={entry.degree}
-          fieldOfStudy={entry.fieldOfStudy}
-          school={entry.school}
-          startDate={entry.startDate}
-          endDate={entry.endDate || "Present"}
+          title={entry.title}
+          event={entry.event}
+          points={entry.points}
         />
       ))}
     </div>

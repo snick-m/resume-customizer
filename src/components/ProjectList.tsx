@@ -1,22 +1,20 @@
-import { useEducationStore } from "@/stores/store"
-import Education from "@/components/Education";
+import { useProjectStore } from "@/stores/store"
+import Project from "@/components/Project";
 
-export function EducationList() {
-  const education = useEducationStore();
+export function ProjectList() {
+  const project = useProjectStore();
 
   return (
     <div>
-      {education.entries.length > 0 &&
-        <h2 className='font-bold border-b-1 text-base mx-4'>Education</h2>
+      {project.entries.length > 0 &&
+        <h2 className='font-bold border-b-1 text-base mx-4'>Project</h2>
       }
-      {education.entries.map((entry, i) => (
-        <Education
+      {project.entries.map((entry, i) => (
+        <Project
           key={i}
-          degree={entry.degree}
-          fieldOfStudy={entry.fieldOfStudy}
-          school={entry.school}
-          startDate={entry.startDate}
-          endDate={entry.endDate || "Present"}
+          title={entry.title}
+          link={entry.link}
+          points={entry.points}
         />
       ))}
     </div>
