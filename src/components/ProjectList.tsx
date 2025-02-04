@@ -7,16 +7,18 @@ export function ProjectList() {
   return (
     <div>
       {project.entries.length > 0 &&
-        <h2 className='font-bold border-b-1 text-base mx-4'>Project</h2>
+        <h2 className='font-bold border-b-1 text-base'>Project</h2>
       }
-      {project.entries.map((entry, i) => (
-        <Project
-          key={i}
-          title={entry.title}
-          link={entry.link}
-          points={entry.points}
-        />
-      ))}
+      <div className="ms-4 me-2">
+        {project.entries.map((entry, i) => (
+          <Project
+            key={i}
+            title={entry.title}
+            link={entry.link}
+            points={entry.points}
+          />
+        ))}
+      </div>
     </div>
   )
 }

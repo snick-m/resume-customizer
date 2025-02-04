@@ -26,6 +26,8 @@
     min-width: 8.5in;
     min-height: 11in;
     max-width: 8.5in;
+    max-height: 11in;
+    overflow-y: scroll;
     color: black;
     background-color: white;
 }

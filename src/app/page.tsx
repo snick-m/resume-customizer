@@ -11,6 +11,8 @@ import { ExperienceList } from "@/components/ExperienceList";
 import ProjectForm from "@/components/ProjectForm";
 import { ProjectList } from "@/components/ProjectList";
 
+// TODO: Implement bold, italic, and underline formatting. Maybe BBCode or Markdown?
+
 export default function Home() {
 
   return (
