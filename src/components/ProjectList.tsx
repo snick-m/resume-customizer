@@ -16,6 +16,7 @@ export function ProjectList() {
             title={entry.title}
             link={entry.link}
             points={entry.points}
+            skills={entry.skills}
           />
         ))}
       </div>

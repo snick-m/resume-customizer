@@ -14,6 +14,7 @@ export function AchievementList() {
           key={i}
           title={entry.title}
           event={entry.event}
+          skills={entry.skills}
           points={entry.points}
         />
       ))}

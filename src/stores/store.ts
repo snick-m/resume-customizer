@@ -19,6 +19,7 @@ export interface ExperienceEntry {
 export interface ProjectEntry {
   title: string;
   points: string[];
+  skills?: string[];
   link?: string;
 }
 
@@ -26,6 +27,7 @@ export interface AchievementEntry {
   title: string;
   event: string;
   points: string[];
+  skills?: string[];
 }
 
 interface EducationState {
@@ -210,6 +212,7 @@ export const useProjectStore = create<ProjectState>((set) => ({
         'Created CAD Model on Fusion360, URDF for Gazebo simulation, and implemented limb motion and walk sequence with C++ on ESP8266 microcontroller allowing a highly reliable development pipeline with testing',
         'Assembled and led a team of 5 Undergraduate students to take the project from ideation to development and then prototype stages demonstrating initiative and leadership',
       ],
+      skills: 'ESP8266, C++, Fusion360, ROS, Gazebo'.split(', '),
     }, {
       title: 'Custom Keyboard Firmware',
       points: [
