@@ -5,21 +5,23 @@ import { ChangeEvent, useState } from "react";
 export default function ProjectForm() {
   const projectInfo = useProjectStore();
   const [projectEntries, setProject] = useState(projectInfo.entries.reduce((acc, entry) => {
-    return acc + `${entry.title}, ${entry.link}\n${entry.points.reduce((a, e) => a + e + "\n", "")}\n\n`
+    console.log(entry);
+    return acc + `${entry.title}, ${entry.link ?? ''}, ${entry.skills?.join(', ') ?? ''}\n${entry.points.reduce((a, e) => a + e + '\n', '')}\n`
   }, ""));
 
   function handleChange(event: ChangeEvent<HTMLTextAreaElement>) {
     setProject(event.target.value);
 
     // Process value
-    const entries = event.target.value.split("\n\n").filter((entry) => entry !== "");
+    const entries = event.target.value.split('\n\n').filter((entry) => entry !== "");
     projectInfo.clearEntries();
     entries.map((entry) => {
-      const [title, link] = entry.split("\n")[0].split(", ");
-      const points = entry.split("\n").slice(1);
+      const [title, link, ...skills] = entry.split('\n')[0].split(', ');
+      const points = entry.split('\n').slice(1);
       projectInfo.addEntry({
         title,
         link,
+        skills,
         points,
       });
     });
