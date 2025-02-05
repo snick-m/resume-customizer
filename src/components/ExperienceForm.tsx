@@ -5,7 +5,7 @@ import { ChangeEvent, useState } from "react";
 export default function ExperienceForm() {
   const experienceInfo = useExperienceStore();
   const [experienceEntries, setExperience] = useState(experienceInfo.entries.reduce((acc, entry) => {
-    return acc + `${entry.company}, ${entry.position}, ${entry.startDate}, ${entry.endDate ?? ""}\n${entry.points.reduce((a, e) => a + e + "\n", "")}\n\n`
+    return acc + `${entry.company}, ${entry.position}, ${entry.startDate}, ${entry.endDate ?? ""}\n${entry.points.join('\n')}\n\n`
   }, ""));
 
   function handleChange(event: ChangeEvent<HTMLTextAreaElement>) {
@@ -30,7 +30,7 @@ export default function ExperienceForm() {
   return (
     <div className="grid grid-flow-row justify-items-stretch content-start w-full gap-4">
       <label htmlFor="experience" className="row-start-1 text-center">Experience</label>
-      <textarea className="p-2 rounded-lg row-start-2 text-black"
+      <textarea className="p-2 rounded-lg row-start-2 text-white bg-zinc-700 scrollbar scrollbar-thumb-gray-900 scrollbar-track-gray-800"
         rows={8}
         value={experienceEntries}
         name="experience"

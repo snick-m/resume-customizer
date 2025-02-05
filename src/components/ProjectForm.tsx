@@ -6,7 +6,7 @@ export default function ProjectForm() {
   const projectInfo = useProjectStore();
   const [projectEntries, setProject] = useState(projectInfo.entries.reduce((acc, entry) => {
     console.log(entry);
-    return acc + `${entry.title}, ${entry.link ?? ''}, ${entry.skills?.join(', ') ?? ''}\n${entry.points.reduce((a, e) => a + e + '\n', '')}\n`
+    return acc + `${entry.title}, ${entry.link ?? ''}, ${entry.skills?.join(', ') ?? ''}\n${entry.points.join('\n')}\n\n`
   }, ""));
 
   function handleChange(event: ChangeEvent<HTMLTextAreaElement>) {

@@ -5,7 +5,7 @@ import { ChangeEvent, useState } from "react";
 export default function AchievementForm() {
   const achievementInfo = useAchievementStore();
   const [achievementEntries, setAchievement] = useState(achievementInfo.entries.reduce((acc, entry) => {
-    return acc + `${entry.title}, ${entry.event}\n${entry.points.reduce((a, e) => a + e + "\n", "")}\n\n`
+    return acc + `${entry.title}, ${entry.event}, ${entry.skills?.join(', ') ?? ''}\n${entry.points.join('\n')}\n\n`
   }, ""));
 
   function handleChange(event: ChangeEvent<HTMLTextAreaElement>) {
@@ -15,11 +15,12 @@ export default function AchievementForm() {
     const entries = event.target.value.split("\n\n").filter((entry) => entry !== "");
     achievementInfo.clearEntries();
     entries.map((entry) => {
-      const [title, event] = entry.split("\n")[0].split(", ");
+      const [title, event, ...skills] = entry.split("\n")[0].split(", ");
       const points = entry.split("\n").slice(1);
       achievementInfo.addEntry({
         title,
         event,
+        skills,
         points,
       });
     });

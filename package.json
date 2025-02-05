@@ -13,6 +13,7 @@
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-latex": "^2.0.0",
+    "react-markdown": "^9.0.3",
     "react-to-print": "^3.0.5",
     "zustand": "^5.0.3"
   },

@@ -1,8 +1,9 @@
 import React from 'react';
 import { ExperienceEntry } from '@/stores/store';
+import Markdown from 'react-markdown';
 
 
-const Education: React.FC<ExperienceEntry> = ({ company, position, startDate, endDate, points }) => {
+const Experience: React.FC<ExperienceEntry> = ({ company, position, startDate, endDate, points }) => {
   return (
     <div className=''>
       <div className="grid grid-flow-col content-between mt-2">
@@ -12,11 +13,11 @@ const Education: React.FC<ExperienceEntry> = ({ company, position, startDate, en
       <div className="text-xs italic">{position}</div>
       <ul className='mt-1'>
         {points.map((point, i) => (
-          <li key={i}>{point}</li>
+          <li key={i}><Markdown>{point}</Markdown></li>
         ))}
       </ul>
     </div>
   );
 };
 
-export default Education;
+export default Experience;
