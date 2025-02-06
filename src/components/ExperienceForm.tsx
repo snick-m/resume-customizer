@@ -30,7 +30,7 @@ export default function ExperienceForm() {
   return (
     <div className="grid grid-flow-row justify-items-stretch content-start w-full gap-4">
       <label htmlFor="experience" className="row-start-1 text-center">Experience</label>
-      <textarea className="p-2 rounded-lg row-start-2 text-white bg-zinc-700 scrollbar scrollbar-thumb-gray-900 scrollbar-track-gray-800"
+      <textarea className="p-2 rounded-lg row-start-2 bg-zinc-900 scrollbar scrollbar-thumb-zinc-900 scrollbar-track-rounded-full scrollbar-track-zinc-800"
         rows={8}
         value={experienceEntries}
         name="experience"

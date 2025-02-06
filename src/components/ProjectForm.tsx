@@ -30,7 +30,7 @@ export default function ProjectForm() {
   return (
     <div className="grid grid-flow-row justify-items-stretch content-start w-full gap-4">
       <label htmlFor="project" className="row-start-1 text-center">Project</label>
-      <textarea className="p-2 rounded-lg row-start-2 text-black"
+      <textarea className="p-2 rounded-lg row-start-2 bg-zinc-900 scrollbar scrollbar-thumb-zinc-900 scrollbar-track-rounded-full scrollbar-track-zinc-800"
         rows={8}
         value={projectEntries}
         name="project"

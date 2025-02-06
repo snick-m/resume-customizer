@@ -36,6 +36,7 @@ interface EducationState {
   updateEntry: (index: number, entry: EducationEntry) => void;
   removeEntry: (index: number) => void;
   clearEntries: () => void;
+  storeInLocalstorage: () => void;
 }
 
 interface ExperienceState {
@@ -44,6 +45,7 @@ interface ExperienceState {
   updateEntry: (index: number, entry: ExperienceEntry) => void;
   removeEntry: (index: number) => void;
   clearEntries: () => void;
+  storeInLocalstorage: () => void;
 }
 
 interface ProjectState {
@@ -52,6 +54,7 @@ interface ProjectState {
   updateEntry: (index: number, entry: ProjectEntry) => void;
   removeEntry: (index: number) => void;
   clearEntries: () => void;
+  storeInLocalstorage: () => void;
 }
 
 interface AchievementState {
@@ -60,6 +63,7 @@ interface AchievementState {
   updateEntry: (index: number, entry: AchievementEntry) => void;
   removeEntry: (index: number) => void;
   clearEntries: () => void;
+  storeInLocalstorage: () => void;
 }
 
 export interface ContactInfo {
@@ -77,6 +81,7 @@ interface ContactInfoState {
   github?: string;
   website?: string;
   setInfo: (info: ContactInfo) => void;
+  storeInLocalstorage: () => void;
 }
 
 interface LayoutState {
@@ -93,7 +98,7 @@ export const useLayoutStore = create<LayoutState>((set) => ({
   toggleIndentation: () => set((state) => ({ indentation: !state.indentation })),
 }));
 
-export const useEducationStore = create<EducationState>((set) => ({
+export const useEducationStore = create<EducationState>((set, get) => ({
   entries: [
     {
       school: 'Toronto Metropolitan University',
@@ -122,9 +127,10 @@ export const useEducationStore = create<EducationState>((set) => ({
     return { entries };
   }),
   clearEntries: () => set({ entries: [] }),
+  storeInLocalstorage: () => localStorage.setItem("", JSON.stringify(get())),
 }));
 
-export const useExperienceStore = create<ExperienceState>((set) => ({
+export const useExperienceStore = create<ExperienceState>((set, get) => ({
   entries: [
     {
       company: 'Toronto MetRobotics',
@@ -202,9 +208,10 @@ export const useExperienceStore = create<ExperienceState>((set) => ({
     return { entries };
   }),
   clearEntries: () => set({ entries: [] }),
+  storeInLocalstorage: () => localStorage.setItem("", JSON.stringify(get())),
 }));
 
-export const useProjectStore = create<ProjectState>((set) => ({
+export const useProjectStore = create<ProjectState>((set, get) => ({
   entries: [
     {
       title: 'Bipedal Robot',
@@ -252,9 +259,10 @@ export const useProjectStore = create<ProjectState>((set) => ({
     return { entries };
   }),
   clearEntries: () => set({ entries: [] }),
+  storeInLocalstorage: () => localStorage.setItem("", JSON.stringify(get())),
 }));
 
-export const useAchievementStore = create<AchievementState>((set) => ({
+export const useAchievementStore = create<AchievementState>((set, get) => ({
   entries: [],
   addEntry: (entry) => set((state) => ({ entries: [...state.entries, entry] })),
   updateEntry: (index, entry) => set((state) => {
@@ -268,13 +276,15 @@ export const useAchievementStore = create<AchievementState>((set) => ({
     return { entries };
   }),
   clearEntries: () => set({ entries: [] }),
+  storeInLocalstorage: () => localStorage.setItem("", JSON.stringify(get())),
 }));
 
-export const useContactInfoStore = create<ContactInfoState>((set) => ({
+export const useContactInfoStore = create<ContactInfoState>((set, get) => ({
   phone: '123-456-7890',
   email: 'mushfiqur.rahman@torontomu.ca',
   linkedin: 'https://linkedin.com/in/mushfiqrrm',
   github: 'https://github.com/snick-m ',
   website: '',
   setInfo: (info) => set(info),
+  storeInLocalstorage: () => localStorage.setItem("", JSON.stringify(get())),
 }));
